@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">SleepSyncV2</string>
+    
+    <!-- Tab Titles -->
+    <string name="tab_home">Home</string>
+    <string name="tab_screen_time">Screen Time</string>
+    <string name="tab_sleep_analytics">Sleep</string>
+    <string name="tab_bedtime">Bedtime</string>
+    <string name="tab_profile">Profile</string>
+    <string name="tab_dashboard">Dashboard</string>
+    <string name="tab_analytics">Analytics</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">SleepSync Dashboard</string>
+    
+    <!-- Screen Time Management -->
+    <string name="screen_time_title">Screen Time Management</string>
+    <string name="screen_time_description">Monitor device usage and promote healthier habits with automatic shutdowns and reminders.</string>
+    <string name="screen_time_configure">Configure</string>
+    <string name="screen_time_today">Today: %1$s</string>
+    
+    <!-- Sleep Data Analytics -->
+    <string name="sleep_analytics_title">Sleep Data Analytics</string>
+    <string name="sleep_analytics_description">Track and analyze sleep behavior for personalized recommendations to improve sleep quality.</string>
+    <string name="sleep_quality_text">Last night\'s sleep quality: %1$s</string>
+    <string name="view_details">View Details</string>
+    
+    <!-- Bedtime Routine -->
+    <string name="bedtime_routine_title">Personalized Bedtime Routine</string>
+    <string name="bedtime_routine_description">Supports a well-organized pre-sleep schedule with customizable plans and timely reminders.</string>
+    <string name="next_bedtime_text">Next bedtime: %1$s</string>
+    <string name="set_routine">Set Routine</string>
+    
+    <!-- Profile Settings -->
+    <string name="profile_settings_title">Profile Settings</string>
+    <string name="profile_name_label">Name</string>
+    <string name="profile_name_hint">Enter your name</string>
+    <string name="profile_email_label">Email</string>
+    <string name="profile_email_hint">Enter your email</string>
+    <string name="edit_profile_photo">Change Photo</string>
+    <string name="sleep_preferences">Sleep Preferences</string>
+    <string name="sleep_goal_label">Your Sleep Goal (hours)</string>
+    <string name="bedtime_reminder_label">Bedtime Reminder</string>
+    <string name="app_settings">App Settings</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="data_sync">Data Sync</string>
+    <string name="save_profile">Save Profile</string>
+</resources>

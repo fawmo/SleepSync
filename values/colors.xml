@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- App Primary Colors -->
+    <color name="primary">#E53935</color>
+    <color name="primary_dark">#B71C1C</color>
+    <color name="primary_variant">#FF5252</color>
+    
+    <!-- App Secondary Colors -->
+    <color name="secondary">#121212</color>
+    <color name="secondary_dark">#000000</color>
+    <color name="secondary_variant">#2C2C2C</color>
+    
+    <!-- Background Colors -->
+    <color name="background">#121212</color>
+    <color name="surface">#1E1E1E</color>
+    <color name="card_background">#222222</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3FFFFFF</color>
+    <color name="text_accent">#FF5252</color>
+    
+    <!-- Sleep Quality Colors -->
+    <color name="sleep_good">#4CAF50</color>
+    <color name="sleep_average">#FFC107</color>
+    <color name="sleep_poor">#F44336</color>
+    
+    <!-- Sleep Phase Colors -->
+    <color name="sleep_deep">#3949AB</color>
+    <color name="sleep_light">#5C6BC0</color>
+    <color name="sleep_rem">#7986CB</color>
+    
+    <!-- Icon Tint Colors -->
+    <color name="icon_tint_primary">#FF5252</color>
+    <color name="icon_tint_secondary">#FFFFFF</color>
+    
+    <!-- Translucent Colors -->
+    <color name="translucent_white">#33FFFFFF</color>
+    <color name="translucent_primary">#33E53935</color>
+</resources>
