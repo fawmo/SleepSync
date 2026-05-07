@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dashboard_gradient_bg">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/secondary"
+        android:elevation="8dp">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/secondary"
+            app:tabTextColor="@color/text_secondary"
+            app:tabSelectedTextColor="@color/primary"
+            app:tabIndicatorColor="@color/primary"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            app:tabInlineLabel="true"
+            app:tabIconTint="@color/tab_icon_color_selector"
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:tabPaddingStart="4dp"
+            app:tabPaddingEnd="4dp"
+            app:tabMinWidth="0dp"
+            app:tabRippleColor="@color/translucent_primary"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorAnimationMode="elastic">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_home" 
+                android:icon="@drawable/ic_home" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_screen_time"
+                android:icon="@drawable/ic_screen_time" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_sleep_analytics"
+                android:icon="@drawable/ic_sleep_analytics" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tab_bedtime"
+                android:icon="@drawable/ic_bedtime_routine" />
+
+        </com.google.android.material.tabs.TabLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Header Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sleep Analytics"
+                android:textColor="@color/text_primary"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="24dp"
+                android:letterSpacing="0.02" />
+
+            <!-- Sleep Quality Summary Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                style="@style/Widget.SleepSyncV2.CardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Last Night's Sleep"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:id="@+id/tv_sleep_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="7h 45m"
+                            android:textColor="@color/primary"
+                            android:textSize="36sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_sleep_goal"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="of 8h goal"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="18sp"
+                            android:layout_marginStart="12dp" />
+
+                        <TextView
+                            android:id="@+id/tv_sleep_quality_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="92%"
+                            android:textColor="@color/sleep_good"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/progress_sleep_quality"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:progress="92"
+                        android:progressTint="@color/sleep_good"
+                        android:background="@color/translucent_white" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Sleep Phases Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                style="@style/Widget.SleepSyncV2.CardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Sleep Phases"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Sleep Phases Chart -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:layout_marginBottom="16dp">
+
+                        <!-- Sleep phases chart will be implemented here -->
+                        <View
+                            android:id="@+id/sleep_phases_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/sleep_phases_chart_placeholder" />
+                    </FrameLayout>
+
+                    <!-- Sleep Phases Legend -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <View
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/circle_deep_sleep"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Deep Sleep"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_deep_sleep_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1h 45m"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <View
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/circle_light_sleep"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Light Sleep"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_light_sleep_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4h 20m"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <View
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:background="@drawable/circle_rem_sleep"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="REM Sleep"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_rem_sleep_duration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1h 40m"
+                            android:textColor="@color/text_primary"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Weekly Sleep Pattern Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                style="@style/Widget.SleepSyncV2.CardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:text="Weekly Sleep Pattern"
+                            android:textColor="@color/text_primary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_weekly_sleep_average"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avg: 7.2h"
+                            android:textColor="@color/primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Weekly Sleep Chart -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="240dp">
+                        
+                        <!-- Bar Chart Implementation -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:baselineAligned="false"
+                            android:paddingTop="20dp"
+                            android:paddingBottom="30dp">
+
+                            <!-- Day 1 -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal"
+                                android:layout_marginHorizontal="4dp">
+
+                                <View
+                                    android:id="@+id/sleep_bar_mon"
+                                    android:layout_width="24dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="75"
+                                    android:background="@drawable/sleep_quality_bar_good" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Mon"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="8dp" />
+                            </LinearLayout>
+
+                            <!-- Day 2 -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal"
+                                android:layout_marginHorizontal="4dp">
+
+                                <View
+                                    android:id="@+id/sleep_bar_tue"
+                                    android:layout_width="24dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="65"
+                                    android:background="@drawable/sleep_quality_bar_average" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tue"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="8dp" />
+                            </LinearLayout>
+
+                            <!-- Day 3 -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal"
+                                android:layout_marginHorizontal="4dp">
+
+                                <View
+                                    android:id="@+id/sleep_bar_wed"
+                                    android:layout_width="24dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="80"
+                                    android:background="@drawable/sleep_quality_bar_good" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Wed"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="8dp" />
+                            </LinearLayout>
+
+                            <!-- Day 4 -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal"
+                                android:layout_marginHorizontal="4dp">
+
+                                <View
+                                    android:id="@+id/sleep_bar_thu"
+                                    android:layout_width="24dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="70"
+                                    android:background="@drawable/sleep_quality_bar_average" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Thu"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="8dp" />
+                            </LinearLayout>
+
+                            <!-- Day 5 -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal"
+                                android:layout_marginHorizontal="4dp">
+
+                                <View
+                                    android:id="@+id/sleep_bar_fri"
+                                    android:layout_width="24dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="55"
+                                    android:background="@drawable/sleep_quality_bar_poor" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Fri"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="8dp" />
+                            </LinearLayout>
+
+                            <!-- Day 6 -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal"
+                                android:layout_marginHorizontal="4dp">
+
+                                <View
+                                    android:id="@+id/sleep_bar_sat"
+                                    android:layout_width="24dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="85"
+                                    android:background="@drawable/sleep_quality_bar_good" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Sat"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="8dp" />
+                            </LinearLayout>
+
+                            <!-- Day 7 -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="bottom|center_horizontal"
+                                android:layout_marginHorizontal="4dp">
+
+                                <View
+                                    android:id="@+id/sleep_bar_sun"
+                                    android:layout_width="24dp"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="92"
+                                    android:background="@drawable/sleep_quality_bar_good" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Sun"
+                                    android:textColor="@color/text_secondary"
+                                    android:textSize="12sp"
+                                    android:layout_marginTop="8dp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </FrameLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Sleep Recommendations Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                style="@style/Widget.SleepSyncV2.CardView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Personalized Recommendations"
+                        android:textColor="@color/text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="16dp" />
+
+                    <!-- Recommendation 1 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_bedtime_routine"
+                            android:layout_marginEnd="12dp"
+                            android:tint="@color/primary" />
+
+                        <TextView
+                            android:id="@+id/tv_recommendation_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Try going to bed 30 minutes earlier to improve your deep sleep percentage."
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!-- Recommendation 2 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="12dp">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_screen_time"
+                            android:layout_marginEnd="12dp"
+                            android:tint="@color/primary" />
+
+                        <TextView
+                            android:id="@+id/tv_recommendation_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Reduce screen time by 1 hour before bedtime to help you fall asleep faster."
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <!-- Recommendation 3 -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="32dp"
+                            android:layout_height="32dp"
+                            android:src="@drawable/ic_sleep_analytics"
+                            android:layout_marginEnd="12dp"
+                            android:tint="@color/primary" />
+
+                        <TextView
+                            android:id="@+id/tv_recommendation_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Your weekend sleep pattern is excellent. Try maintaining a similar schedule during weekdays."
+                            android:textColor="@color/text_primary"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Sleep Settings Button -->
+            <Button
+                android:id="@+id/btn_sleep_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sleep Settings"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:backgroundTint="@color/primary"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout> 
